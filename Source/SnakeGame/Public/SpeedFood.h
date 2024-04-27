@@ -3,8 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SnakeBase.h"
 #include "Food.h"
+#include "Interactable.h"
 #include "SpeedFood.generated.h"
+
 
 /**
  * 
@@ -13,5 +16,24 @@ UCLASS()
 class SNAKEGAME_API ASpeedFood : public AFood
 {
 	GENERATED_BODY()
+
+	ASpeedFood();
+
+
+
+protected:
+
+	void BeginPlay() override;
+
+
+
+public:
 	
+	FTimerHandle SpeedTimer;
+
+	void Tick(float DeltaTime) override;
+
+
+	virtual void Interact(AActor* Interactor, bool bIsHead) override;	
+
 };

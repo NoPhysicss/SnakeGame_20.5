@@ -32,7 +32,7 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 	float ElementSize;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditAnywhere)
 	float MovementSpeed;
 
 	UPROPERTY()
@@ -40,6 +40,9 @@ public:
 
 	UPROPERTY()
 	EMovementDirection LastMoveDirection;
+
+
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -47,8 +50,17 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+	UFUNCTION(BlueprintCallable)
 	void AddSnakeElement(int ElementsNum = 1);
-
+	UFUNCTION(BlueprintCallable)
 	void Move();
+	UFUNCTION()
+	void SnakeElementOverlap(ASnakeElementBase* OverlappedElement, AActor* Other);
+
+	void SetSpeed(float NewSpeed)
+	{
+		MovementSpeed = NewSpeed;
+	}
+
+
 };
