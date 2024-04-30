@@ -3,37 +3,24 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "SnakeBase.h"
-#include "Food.h"
-#include "Interactable.h"
+#include "GameFramework/Actor.h"
 #include "SpeedFood.generated.h"
 
-
-/**
- * 
- */
 UCLASS()
-class SNAKEGAME_API ASpeedFood : public AFood
+class SNAKEGAME_API ASpeedFood : public AActor
 {
 	GENERATED_BODY()
-
+	
+public:	
+	// Sets default values for this actor's properties
 	ASpeedFood();
 
-
-
 protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
-	void BeginPlay() override;
-
-
-
-public:
-	
-	FTimerHandle SpeedTimer;
-
-	void Tick(float DeltaTime) override;
-
-
-	virtual void Interact(AActor* Interactor, bool bIsHead) override;	
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 };
