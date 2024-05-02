@@ -98,7 +98,7 @@ void ASnakeBase::Move()
 		temp = EMovementDirection::LEFT;
 	}
 
-	if (temp == PressedDirection)
+	if (temp == PressedDirection) 
 	{}
 	else
 	{
