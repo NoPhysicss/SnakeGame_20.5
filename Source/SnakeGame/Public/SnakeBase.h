@@ -39,11 +39,11 @@ public:
 	TArray<ASnakeElementBase*> SnakeElements;
 
 	UPROPERTY()
-	EMovementDirection LastMoveDirection;
+	EMovementDirection DesiredDirection;
 
 	UPROPERTY()
 
-	EMovementDirection CurentMoveDirection;
+	EMovementDirection CurrentMoveDirection;
 
 
 

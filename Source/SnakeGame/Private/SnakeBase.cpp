@@ -12,7 +12,7 @@ ASnakeBase::ASnakeBase()
 	PrimaryActorTick.bCanEverTick = true;
 	ElementSize = 120.0;
 	MovementSpeed = 0.5;
-	LastMoveDirection = EMovementDirection::DOWN;
+	CurrentMoveDirection = EMovementDirection::DOWN;
 }
 
 // Called when the game starts or when spawned
@@ -63,7 +63,7 @@ void ASnakeBase::Move()
 	
 
 	
-	switch (LastMoveDirection)
+	switch (DesiredDirection)
 	{
 		case EMovementDirection::UP:
 				MovementVector.X += ElementSize;
@@ -78,7 +78,12 @@ void ASnakeBase::Move()
 				MovementVector.Y -= ElementSize;
 				break;
 	}
-	
+
+	if (CurrentMoveDirection != DesiredDirection)
+	{
+		CurrentMoveDirection = DesiredDirection;
+	}
+
 	//AddActorWorldOffset(MovementVector);
 	SnakeElements[0]->ToggleCollision();
 

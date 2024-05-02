@@ -49,13 +49,13 @@ void APlayerPawnBase::HandlPlayerVerticalInput(float value)
 {
 	if (IsValid(SnakeActor))
 	{
-		if (value > 0 && SnakeActor->LastMoveDirection != EMovementDirection::DOWN )
+		if (value > 0 && SnakeActor->DesiredDirection != EMovementDirection::DOWN )
 		{
-			SnakeActor->LastMoveDirection = EMovementDirection::UP;
+			SnakeActor->DesiredDirection = EMovementDirection::UP;
 		}
-		else if (value < 0 && SnakeActor->LastMoveDirection != EMovementDirection::UP )
+		else if (value < 0 && SnakeActor->DesiredDirection != EMovementDirection::UP )
 		{
-			SnakeActor->LastMoveDirection = EMovementDirection::DOWN;
+			SnakeActor->DesiredDirection = EMovementDirection::DOWN;
 		}
 	}
 }
@@ -64,13 +64,13 @@ void APlayerPawnBase::HandlPlayerHorizontallInput(float value)
 {
 	if (IsValid(SnakeActor))
 	{
-		if (value > 0 && SnakeActor->LastMoveDirection != EMovementDirection::RIGHT )
+		if (value > 0 && SnakeActor->DesiredDirection != EMovementDirection::RIGHT )
 		{
-			SnakeActor->LastMoveDirection = EMovementDirection::LEFT;
+			SnakeActor->DesiredDirection = EMovementDirection::LEFT;
 		}
-		else if (value < 0 && SnakeActor->LastMoveDirection != EMovementDirection::LEFT )
+		else if (value < 0 && SnakeActor->DesiredDirection != EMovementDirection::LEFT )
 		{
-			SnakeActor->LastMoveDirection = EMovementDirection::RIGHT;
+			SnakeActor->DesiredDirection = EMovementDirection::RIGHT;
 		}
 	}
 }
