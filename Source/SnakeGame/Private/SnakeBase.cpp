@@ -10,7 +10,7 @@ ASnakeBase::ASnakeBase()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	ElementSize = 110.0;
+	ElementSize = 120.0;
 	MovementSpeed = 0.5;
 	LastMoveDirection = EMovementDirection::DOWN;
 }
@@ -61,22 +61,24 @@ void ASnakeBase::Move()
 {
 	FVector MovementVector(ForceInitToZero);
 	
+
+	
 	switch (LastMoveDirection)
 	{
-	case EMovementDirection::UP:
-		MovementVector.X += ElementSize;
-		break;
-	case EMovementDirection::DOWN:
-		MovementVector.X -= ElementSize;
-		break;
-	case EMovementDirection::RIGHT:
-		MovementVector.Y += ElementSize;
-		break;
-	case EMovementDirection::LEFT:
-		MovementVector.Y -= ElementSize;
-		break;
+		case EMovementDirection::UP:
+				MovementVector.X += ElementSize;
+				break;
+		case EMovementDirection::DOWN:
+				MovementVector.X -= ElementSize;
+				break;
+		case EMovementDirection::RIGHT:
+				MovementVector.Y += ElementSize;
+				break;
+		case EMovementDirection::LEFT:
+				MovementVector.Y -= ElementSize;
+				break;
 	}
-
+	
 	//AddActorWorldOffset(MovementVector);
 	SnakeElements[0]->ToggleCollision();
 
@@ -105,4 +107,21 @@ void ASnakeBase::SnakeElementOverlap(ASnakeElementBase* OverlappedElement, AActo
 			InteractableInterface->Interact(this, bIsFirst);
 		}
 	}
+}
+
+void ASnakeBase::SetSpeed(float BonusSpeed)
+{
+	SetActorTickInterval(BonusSpeed);
+
+	FTimerHandle SpeedTimer;
+	GetWorldTimerManager().SetTimer(SpeedTimer,
+		FTimerDelegate::CreateWeakLambda(
+			this,
+			[this]
+			{
+				SetActorTickInterval(MovementSpeed);
+			}),
+		5.0f,
+		false
+	);
 }

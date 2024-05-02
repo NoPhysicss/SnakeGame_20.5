@@ -41,6 +41,10 @@ public:
 	UPROPERTY()
 	EMovementDirection LastMoveDirection;
 
+	UPROPERTY()
+
+	EMovementDirection CurentMoveDirection;
+
 
 
 protected:
@@ -57,10 +61,7 @@ public:
 	UFUNCTION()
 	void SnakeElementOverlap(ASnakeElementBase* OverlappedElement, AActor* Other);
 
-	void SetSpeed(float NewSpeed)
-	{
-		MovementSpeed = NewSpeed;
-	}
-
+	void SetSpeed(float BonusSpeed);
+	
 
 };

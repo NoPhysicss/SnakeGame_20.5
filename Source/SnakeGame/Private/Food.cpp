@@ -3,6 +3,7 @@
 
 #include "Food.h"
 #include "SnakeBase.h"
+
 // Sets default values
 AFood::AFood()
 {
@@ -27,12 +28,19 @@ void AFood::Tick(float DeltaTime)
 
 void AFood::Interact(AActor* Interactor, bool bIsHead)
 {
+	int X = (rand() % 3000) - 1620;
+	int Y = (rand() % 3000) - 1620;
+
+	X = X - (X % 120);
+	Y = Y - (Y % 120);
+
+	FVector NewLoc = FVector(X, Y, 0);
+
 	auto Snake = Cast<ASnakeBase>(Interactor);
 	if (IsValid(Snake))
 	{
 		Snake->AddSnakeElement();
-		Destroy();
+		SetActorLocation(NewLoc);
 	}
-
 }
 

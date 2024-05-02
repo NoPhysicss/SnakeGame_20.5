@@ -29,7 +29,6 @@ void APlayerPawnBase::BeginPlay()
 void APlayerPawnBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input
@@ -50,11 +49,11 @@ void APlayerPawnBase::HandlPlayerVerticalInput(float value)
 {
 	if (IsValid(SnakeActor))
 	{
-		if (value > 0 && SnakeActor->LastMoveDirection != EMovementDirection::DOWN)
+		if (value > 0 && SnakeActor->LastMoveDirection != EMovementDirection::DOWN )
 		{
 			SnakeActor->LastMoveDirection = EMovementDirection::UP;
 		}
-		else if (value < 0 && SnakeActor->LastMoveDirection != EMovementDirection::UP)
+		else if (value < 0 && SnakeActor->LastMoveDirection != EMovementDirection::UP )
 		{
 			SnakeActor->LastMoveDirection = EMovementDirection::DOWN;
 		}
@@ -65,14 +64,15 @@ void APlayerPawnBase::HandlPlayerHorizontallInput(float value)
 {
 	if (IsValid(SnakeActor))
 	{
-		if (value > 0 && SnakeActor->LastMoveDirection != EMovementDirection::RIGHT)
+		if (value > 0 && SnakeActor->LastMoveDirection != EMovementDirection::RIGHT )
 		{
 			SnakeActor->LastMoveDirection = EMovementDirection::LEFT;
 		}
-		else if (value < 0 && SnakeActor->LastMoveDirection != EMovementDirection::LEFT)
+		else if (value < 0 && SnakeActor->LastMoveDirection != EMovementDirection::LEFT )
 		{
 			SnakeActor->LastMoveDirection = EMovementDirection::RIGHT;
 		}
 	}
 }
+
 
