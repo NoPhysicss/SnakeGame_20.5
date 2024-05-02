@@ -17,6 +17,7 @@ enum class EMovementDirection
 	RIGHT
 };
 
+
 UCLASS()
 class SNAKEGAME_API ASnakeBase : public AActor
 {
@@ -42,10 +43,13 @@ public:
 	EMovementDirection DesiredDirection;
 
 	UPROPERTY()
-
 	EMovementDirection CurrentMoveDirection;
 
+	UPROPERTY()
+	EMovementDirection PressedDirection;
 
+	UPROPERTY()
+	EMovementDirection temp;
 
 protected:
 	// Called when the game starts or when spawned

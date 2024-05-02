@@ -13,12 +13,14 @@ ASnakeBase::ASnakeBase()
 	ElementSize = 120.0;
 	MovementSpeed = 0.5;
 	CurrentMoveDirection = EMovementDirection::DOWN;
+
 }
 
 // Called when the game starts or when spawned
 void ASnakeBase::BeginPlay()
 {
 	Super::BeginPlay();
+	DesiredDirection = EMovementDirection::DOWN;
 	SetActorTickInterval(MovementSpeed);
 	AddSnakeElement(4);
 }
@@ -79,10 +81,36 @@ void ASnakeBase::Move()
 				break;
 	}
 
-	if (CurrentMoveDirection != DesiredDirection)
+	if (CurrentMoveDirection == EMovementDirection::UP)
 	{
-		CurrentMoveDirection = DesiredDirection;
+		temp = EMovementDirection::DOWN;
 	}
+	else if (CurrentMoveDirection == EMovementDirection::DOWN)
+	{
+		temp = EMovementDirection::UP;
+	}
+	else if (CurrentMoveDirection == EMovementDirection::LEFT)
+	{
+		temp = EMovementDirection::RIGHT;
+	}
+	else if (CurrentMoveDirection == EMovementDirection::RIGHT)
+	{
+		temp = EMovementDirection::LEFT;
+	}
+
+	if (temp == PressedDirection)
+	{}
+	else
+	{
+		DesiredDirection = PressedDirection;
+		if (CurrentMoveDirection != PressedDirection )
+		{
+			CurrentMoveDirection = PressedDirection;
+		}
+	}
+
+
+	
 
 	//AddActorWorldOffset(MovementVector);
 	SnakeElements[0]->ToggleCollision();
