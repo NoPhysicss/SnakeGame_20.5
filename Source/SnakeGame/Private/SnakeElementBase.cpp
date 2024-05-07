@@ -44,7 +44,6 @@ void ASnakeElementBase::Interact(AActor* Interactor, bool bIsHead)
 	if (IsValid(Snake))
 	{
 		Snake->Destroy();
-
 	}
 }
 

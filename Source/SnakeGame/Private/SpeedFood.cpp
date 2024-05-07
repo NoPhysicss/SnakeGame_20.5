@@ -49,20 +49,18 @@ void ASpeedFood::Interact(AActor* Interactor, bool bIsHead)
 		GetWorld()->GetTimerManager().SetTimer(UnusedHandle, 
 			[this]
 			{
-				int X = (rand() % 3000) - 1620;
-				int Y = (rand() % 3000) - 1620;
+				int X = (rand() % 2880) - 1440;
+				int Y = (rand() % 2880) - 1440;
 
 				X = X - (X % 120);
 				Y = Y - (Y % 120);
+
 				FVector NewLoc = FVector(X, Y, 0);
 
 				SetActorLocation(NewLoc);
 			}, 
 			10.0f, false);
-		
 	}
-
-
 }
 
 

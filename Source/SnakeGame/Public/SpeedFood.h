@@ -28,14 +28,4 @@ public:
 
 	virtual void Interact(AActor* Interactor, bool bIsHead) override;
 
-	/*void SetCanSpawn(bool bNewCanSpawn)
-	{
-		bCanSpawn = bNewCanSpawn;
-	}
-
-	// Call this function to check whether the food can spawn or relocate
-	bool GetCanSpawn() const
-	{
-		return bCanSpawn;
-	}*/
 };

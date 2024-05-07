@@ -64,7 +64,34 @@ void ASnakeBase::Move()
 	FVector MovementVector(ForceInitToZero);
 	
 
-	
+	if (temp == PressedDirection)
+	{
+	}
+	else
+	{
+		DesiredDirection = PressedDirection;
+		if (CurrentMoveDirection != PressedDirection)
+		{
+			CurrentMoveDirection = DesiredDirection;
+		}
+	}
+	 
+	switch (CurrentMoveDirection)
+	{
+	case EMovementDirection::DOWN:
+		temp = EMovementDirection::UP;
+		break;
+	case EMovementDirection::UP:
+		temp = EMovementDirection::DOWN;
+		break;
+	case EMovementDirection::LEFT:
+		temp = EMovementDirection::RIGHT;
+		break;
+	case EMovementDirection::RIGHT:
+		temp = EMovementDirection::LEFT;
+		break;
+	}
+
 	switch (DesiredDirection)
 	{
 		case EMovementDirection::UP:
@@ -80,37 +107,6 @@ void ASnakeBase::Move()
 				MovementVector.Y -= ElementSize;
 				break;
 	}
-
-	if (CurrentMoveDirection == EMovementDirection::UP)
-	{
-		temp = EMovementDirection::DOWN;
-	}
-	else if (CurrentMoveDirection == EMovementDirection::DOWN)
-	{
-		temp = EMovementDirection::UP;
-	}
-	else if (CurrentMoveDirection == EMovementDirection::LEFT)
-	{
-		temp = EMovementDirection::RIGHT;
-	}
-	else if (CurrentMoveDirection == EMovementDirection::RIGHT)
-	{
-		temp = EMovementDirection::LEFT;
-	}
-
-	if (temp == PressedDirection) 
-	{}
-	else
-	{
-		DesiredDirection = PressedDirection;
-		if (CurrentMoveDirection != PressedDirection )
-		{
-			CurrentMoveDirection = PressedDirection;
-		}
-	}
-
-
-	
 
 	//AddActorWorldOffset(MovementVector);
 	SnakeElements[0]->ToggleCollision();
